@@ -7,26 +7,33 @@
 
 //To avoid decisions and branches in the counting loop, the rules can be rearranged from an egocentric approach of the inner field regarding its neighbours to a scientific observer's viewpoint: if the sum of all nine fields in a given neighbourhood is three, the inner field state for the next generation will be life; if the all-field sum is four, the inner field retains its current state; and every other sum sets the inner field to death.
 
-let grid = [
-    [1, 1, 1],
-    [0, 1, 0],
-    [0, 0, 0],
-];
+let arr = createArr(30); //2d array
 
-let grid2 = [
-    [0, 0, 0],
-    [0, 0, 0],
-    [0, 0, 0],
-];
+createGrid(30);
 
-function createGrid(size) {
-    let grid = [];
+function createArr(size) {
+    let arr = [];
 
     for (let i = 0; i < size; i++) {
-        grid[i] = new Array(size).fill(0);
+        arr[i] = new Array(size).fill(0);
     }
 
-    return grid;
+    return arr;
+}
+
+function createGrid(size) {
+    const container = document.getElementById("container");
+
+    for (let r = 0; r < size; r++) {
+        let row = document.createElement("div");
+
+        for (let c = 0; c < size; c++) {
+            let column = document.createElement("div");
+            row.appendChild(column).className = "cell";
+        }
+
+        container.appendChild(row).className = "gridRow";
+    }
 }
 
 function adjacentSum(grid, row, column) {
@@ -54,12 +61,3 @@ function living(sum) {
         return "Dead";
     }
 }
-
-for (let i = 0; i < grid.length; i++) {
-    for (let j = 0; j < grid[i].length; j++) {
-        //console.log(living(adjacentSum(grid, i, j)));
-    }
-}
-
-testGrid = createGrid(30);
-console.log(testGrid);
