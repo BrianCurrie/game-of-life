@@ -8,8 +8,11 @@
 //To avoid decisions and branches in the counting loop, the rules can be rearranged from an egocentric approach of the inner field regarding its neighbours to a scientific observer's viewpoint: if the sum of all nine fields in a given neighbourhood is three, the inner field state for the next generation will be life; if the all-field sum is four, the inner field retains its current state; and every other sum sets the inner field to death.
 
 let arr = createArr(30); //2d array
-
 createGrid(30);
+
+function displayGrid() {
+    const container = document.getElementById("container");
+}
 
 function createArr(size) {
     let arr = [];
@@ -33,6 +36,20 @@ function createGrid(size) {
         }
 
         container.appendChild(row).className = "gridRow";
+    }
+
+    const rows = Array.from(document.getElementsByClassName("gridRow"));
+
+    for (let i = 0; i < arr.length; i++) {
+        for (let j = 0; j < arr[i].length; j++) {
+            rows[i].childNodes[j].addEventListener("click", (e) => {
+                if (e.target.classList.contains("alive")) {
+                    e.target.classList.remove("alive");
+                } else {
+                    e.target.classList.add("alive");
+                }
+            });
+        }
     }
 }
 
