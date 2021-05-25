@@ -23,8 +23,8 @@ body {
 
 .cell {
     border: 1px solid gray;
-    min-width: 20px;
-    min-height: 20px;
+    min-width: 15px;
+    min-height: 15px;
 }
 
 .alive {

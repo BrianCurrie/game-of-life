@@ -7,34 +7,45 @@
 
 //To avoid decisions and branches in the counting loop, the rules can be rearranged from an egocentric approach of the inner field regarding its neighbours to a scientific observer's viewpoint: if the sum of all nine fields in a given neighbourhood is three, the inner field state for the next generation will be life; if the all-field sum is four, the inner field retains its current state; and every other sum sets the inner field to death.
 
-let arr = createArr(30); //2d array
-let arr2 = createArr(30);
-createGrid(30);
+const gridSize = 60; //gridSize hardcoded, allow user to choose size?
 
-document.getElementById("runSim").addEventListener("click", runSim);
+let currentArray = createArr(gridSize); //2d array
+let newArray = createArr(gridSize);
+createGrid(gridSize);
+
+let simRunning;
+document.getElementById("nextStep").addEventListener("click", runSim);
+document.getElementById("play").addEventListener("click", () => {
+    simRunning = setInterval(runSim, 500);
+    document.getElementById("play").disabled = true;
+});
+document.getElementById("pause").addEventListener("click", () => {
+    clearInterval(simRunning);
+    document.getElementById("play").disabled = false;
+});
 
 function runSim() {
-    for (let i = 0; i < arr.length; i++) {
-        for (let j = 0; j < arr[i].length; j++) {
-            if (adjacentSum(arr, i, j) == 3) {
-                arr2[i][j] = 1;
-            } else if (adjacentSum(arr, i, j) == 4) {
-                arr2[i][j] = arr[i][j];
+    for (let i = 0; i < currentArray.length; i++) {
+        for (let j = 0; j < currentArray[i].length; j++) {
+            if (adjacentSum(currentArray, i, j) == 3) {
+                newArray[i][j] = 1;
+            } else if (adjacentSum(currentArray, i, j) == 4) {
+                newArray[i][j] = currentArray[i][j];
             } else {
-                arr2[i][j] = 0;
+                newArray[i][j] = 0;
             }
         }
     }
     displayGrid();
-    arr = arr2;
-    arr2 = createArr(30);
+    currentArray = newArray;
+    newArray = createArr(gridSize);
 }
 
 function displayGrid() {
     const rows = Array.from(document.getElementsByClassName("gridRow"));
-    for (let i = 0; i < arr2.length; i++) {
-        for (let j = 0; j < arr2[i].length; j++) {
-            if (arr2[i][j] == 1) {
+    for (let i = 0; i < newArray.length; i++) {
+        for (let j = 0; j < newArray[i].length; j++) {
+            if (newArray[i][j] == 1) {
                 rows[i].childNodes[j].classList.add("alive");
             } else {
                 rows[i].childNodes[j].classList.remove("alive");
@@ -44,13 +55,13 @@ function displayGrid() {
 }
 
 function createArr(size) {
-    let arr = [];
+    let currentArray = [];
 
     for (let i = 0; i < size; i++) {
-        arr[i] = new Array(size).fill(0);
+        currentArray[i] = new Array(size).fill(0);
     }
 
-    return arr;
+    return currentArray;
 }
 
 function createGrid(size) {
@@ -70,17 +81,17 @@ function createGrid(size) {
 
     const rows = Array.from(document.getElementsByClassName("gridRow"));
 
-    for (let i = 0; i < arr.length; i++) {
-        for (let j = 0; j < arr[i].length; j++) {
+    for (let i = 0; i < currentArray.length; i++) {
+        for (let j = 0; j < currentArray[i].length; j++) {
             rows[i].childNodes[j].addEventListener("click", (e) => {
                 let row = e.target["location"][0];
                 let cell = e.target["location"][1];
                 if (e.target.classList.contains("alive")) {
                     e.target.classList.remove("alive");
-                    arr[row][cell] = 0;
+                    currentArray[row][cell] = 0;
                 } else {
                     e.target.classList.add("alive");
-                    arr[row][cell] = 1;
+                    currentArray[row][cell] = 1;
                 }
             });
         }
