@@ -17,6 +17,8 @@ createGrid(gridSize);
 let simRunning; // Interval for calling runSim
 let simSpeed = 500;
 
+let slider = (document.getElementById("speed").value = 500);
+
 document.getElementById("nextStep").addEventListener("click", runSim);
 document.getElementById("play").addEventListener("click", () => {
     simRunning = setInterval(runSim, simSpeed);
@@ -34,10 +36,10 @@ document.getElementById("clear").addEventListener("click", () => {
     displayGrid();
 });
 
-// Set speed between one generation every 1000ms -> every 100ms
+// Set speed between one generation every 1100ms -> every 100ms
 document.getElementById("speed").addEventListener("input", () => {
     clearInterval(simRunning);
-    simSpeed = Math.round(1000 - document.getElementById("speed").value);
+    simSpeed = Math.round(1100 - document.getElementById("speed").value);
     console.log(simSpeed);
     document.getElementById("play").disabled = false;
 });
