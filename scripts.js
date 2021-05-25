@@ -11,16 +11,34 @@ const gridSize = 60; //gridSize hardcoded, allow user to choose size?
 
 let currentArray = createArr(gridSize); //2d array
 let newArray = createArr(gridSize);
+
 createGrid(gridSize);
 
-let simRunning;
+let simRunning; // Interval for calling runSim
+let simSpeed = 500;
+
 document.getElementById("nextStep").addEventListener("click", runSim);
 document.getElementById("play").addEventListener("click", () => {
-    simRunning = setInterval(runSim, 500);
+    simRunning = setInterval(runSim, simSpeed);
     document.getElementById("play").disabled = true;
 });
 document.getElementById("pause").addEventListener("click", () => {
     clearInterval(simRunning);
+    document.getElementById("play").disabled = false;
+});
+document.getElementById("clear").addEventListener("click", () => {
+    clearInterval(simRunning);
+    document.getElementById("play").disabled = false;
+    currentArray = createArr(gridSize);
+    newArray = createArr(gridSize);
+    displayGrid();
+});
+
+// Set speed between one generation every 1000ms -> every 100ms
+document.getElementById("speed").addEventListener("input", () => {
+    clearInterval(simRunning);
+    simSpeed = Math.round(1000 - document.getElementById("speed").value);
+    console.log(simSpeed);
     document.getElementById("play").disabled = false;
 });
 
@@ -54,6 +72,7 @@ function displayGrid() {
     }
 }
 
+// Create 2d array filled with 0s
 function createArr(size) {
     let currentArray = [];
 
