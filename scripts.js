@@ -17,18 +17,17 @@ function runSim() {
     for (let i = 0; i < arr.length; i++) {
         for (let j = 0; j < arr[i].length; j++) {
             if (adjacentSum(arr, i, j) == 3) {
-                console.log("1");
                 arr2[i][j] = 1;
             } else if (adjacentSum(arr, i, j) == 4) {
-                console.log("same");
                 arr2[i][j] = arr[i][j];
             } else {
-                console.log("0");
                 arr2[i][j] = 0;
             }
         }
     }
     displayGrid();
+    arr = arr2;
+    arr2 = createArr(30);
 }
 
 function displayGrid() {
