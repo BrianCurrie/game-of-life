@@ -15,7 +15,8 @@ let newArray = createArr(gridSize);
 createGrid(gridSize);
 
 let simRunning; // Interval for calling runSim
-let simSpeed = 500;
+let simSpeed = 500; // Default sim speed
+let generationCounter = 0;
 
 let slider = (document.getElementById("speed").value = 500);
 
@@ -34,6 +35,10 @@ document.getElementById("clear").addEventListener("click", () => {
     currentArray = createArr(gridSize);
     newArray = createArr(gridSize);
     displayGrid();
+    generationCounter = 0;
+    document.getElementById(
+        "generations"
+    ).innerHTML = `Generation ${generationCounter}`;
 });
 
 // Set speed between one generation every 1100ms -> every 100ms
@@ -59,10 +64,15 @@ function runSim() {
     displayGrid();
     currentArray = newArray;
     newArray = createArr(gridSize);
+    generationCounter++;
+    document.getElementById(
+        "generations"
+    ).innerHTML = `Generation ${generationCounter}`;
 }
 
 function displayGrid() {
     const rows = Array.from(document.getElementsByClassName("gridRow"));
+
     for (let i = 0; i < newArray.length; i++) {
         for (let j = 0; j < newArray[i].length; j++) {
             if (newArray[i][j] == 1) {
