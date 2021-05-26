@@ -7,7 +7,7 @@
 
 //To avoid decisions and branches in the counting loop, the rules can be rearranged from an egocentric approach of the inner field regarding its neighbours to a scientific observer's viewpoint: if the sum of all nine fields in a given neighbourhood is three, the inner field state for the next generation will be life; if the all-field sum is four, the inner field retains its current state; and every other sum sets the inner field to death.
 
-const gridSize = 60; //gridSize hardcoded, allow user to choose size?
+const gridSize = 50; //gridSize hardcoded, allow user to choose size?
 
 let currentArray = createArr(gridSize); //2d array
 let newArray = createArr(gridSize);

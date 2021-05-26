@@ -8,21 +8,29 @@
         <link rel="stylesheet" href="style.css" />
     </head>
     <body>
-        <button id="nextStep">Next step</button>
-        <button id="play">Play</button>
-        <button id="pause">Pause</button>
-        <button id="clear">Clear</button>
-        <div id="generations">Generation 0</div>
-        <p>Speed:</p>
-        <input
-            id="speed"
-            name="speed"
-            type="range"
-            min="0"
-            max="1000"
-            step="100"
-        />
         <div id="container"></div>
+        <div id="actionBar">
+            <div id="buttons">
+                <button id="nextStep">Next step</button>
+                <button id="play">Play</button>
+                <button id="pause">Pause</button>
+                <button id="clear">Clear</button>
+            </div>
+            <div id="actionBarSecondary">
+                <div id="speedInput">
+                    <p>Speed:</p>
+                    <input
+                        id="speed"
+                        name="speed"
+                        type="range"
+                        min="0"
+                        max="1000"
+                        step="100"
+                    />
+                </div>
+                <div id="generations">Generation 0</div>
+            </div>
+        </div>
         <script src="scripts.js" async defer></script>
     </body>
 </html>

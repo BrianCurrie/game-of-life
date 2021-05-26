@@ -9,11 +9,27 @@ body {
 }
 
 #container {
-    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+#actionBar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+}
+
+#actionBarSecondary {
+    display: flex;
+    align-items: center;
+}
+
+#speedInput {
+    display: flex;
+    margin: 0 10px;
 }
 
 .gridRow {
