@@ -45,7 +45,6 @@ document.getElementById("clear").addEventListener("click", () => {
 document.getElementById("speed").addEventListener("input", () => {
     clearInterval(simRunning);
     simSpeed = Math.round(1100 - document.getElementById("speed").value);
-    console.log(simSpeed);
     document.getElementById("play").disabled = false;
 });
 
@@ -129,6 +128,7 @@ function createGrid(size) {
     }
 }
 
+/* adjacentSum takes the sum of any 9 cell group, row+column corresponding to the center of this 3x3 grid  */
 function adjacentSum(grid, row, column) {
     let sum = 0;
 
