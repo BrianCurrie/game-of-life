@@ -41,6 +41,22 @@ document.getElementById("clear").addEventListener("click", () => {
     ).innerHTML = `Generation ${generationCounter}`;
 });
 
+//Adding patterns test [add reset grid function so we arent repeating code]
+document.getElementById("pulse").addEventListener("click", () => {
+    clearInterval(simRunning);
+    document.getElementById("play").disabled = false;
+
+    // Using JSON parse and stringify to dupicate arrays instead of passing pointers arround
+    currentArray = JSON.parse(JSON.stringify(presets.pre_pulsar));
+    newArray = JSON.parse(JSON.stringify(presets.pre_pulsar));
+    displayGrid();
+
+    generationCounter = 0;
+    document.getElementById(
+        "generations"
+    ).innerHTML = `Generation ${generationCounter}`;
+});
+
 // Set speed between one generation every 1100ms -> every 100ms
 document.getElementById("speed").addEventListener("input", () => {
     clearInterval(simRunning);
@@ -61,7 +77,7 @@ function runSim() {
         }
     }
     displayGrid();
-    currentArray = newArray;
+    currentArray = JSON.parse(JSON.stringify(newArray));
     newArray = createArr(gridSize);
     generationCounter++;
     document.getElementById(
