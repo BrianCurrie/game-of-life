@@ -47,8 +47,8 @@ document.getElementById("pulse").addEventListener("click", () => {
     document.getElementById("play").disabled = false;
 
     // Using JSON parse and stringify to dupicate arrays instead of passing pointers arround
-    currentArray = JSON.parse(JSON.stringify(presets.pre_pulsar));
-    newArray = JSON.parse(JSON.stringify(presets.pre_pulsar));
+    currentArray = JSON.parse(JSON.stringify(presets.spider));
+    newArray = JSON.parse(JSON.stringify(presets.spider));
     displayGrid();
 
     generationCounter = 0;
