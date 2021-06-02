@@ -8,7 +8,35 @@
         <link rel="stylesheet" href="style.css" />
     </head>
     <body>
-        <button id="pulse">Pulsar</button>
+        <div id="dropdown">
+            <div class="dropdownText">
+                Presets (Click an image to load the preset)
+            </div>
+            <div class="preset">
+                <div class="presetName">Spider</div>
+                <div class="presetDesc">
+                    The smallest known c/5 orthogonal spaceship. Discovered by
+                    David Bell on April 14, 1997.
+                </div>
+                <img id="spider" src="images/spider.png" alt="spider" />
+            </div>
+            <div class="preset">
+                <div class="presetName">Beacon</div>
+                <div class="presetDesc">
+                    The simplest on-off oscillator. Discovered by John Conway in
+                    March, 1970.
+                </div>
+                <img id="beacon" src="images/beacon.png" alt="beacon" />
+            </div>
+            <div class="preset">
+                <div class="presetName">Blinker</div>
+                <div class="presetDesc">
+                    The smallest and most common oscillator. Discovered by John
+                    Conway in March, 1970.
+                </div>
+                <img id="blinker" src="images/blinker.png" alt="blinker" />
+            </div>
+        </div>
         <div id="container"></div>
         <div id="actionBar">
             <div id="buttons">

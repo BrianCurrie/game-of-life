@@ -47,8 +47,13 @@ document.getElementById("clear").addEventListener("click", () => {
     ).innerHTML = `Generation ${generationCounter}`;
 });
 
-//Adding patterns test [add reset grid function so we arent repeating code]
-document.getElementById("pulse").addEventListener("click", () => {
+/***********************
+
+    Presets section [Break these down into functions so we aren't repeating code.]
+
+************************/
+
+document.getElementById("spider").addEventListener("click", () => {
     clearInterval(simRunning);
     document.getElementById("play").disabled = false;
 
@@ -62,6 +67,42 @@ document.getElementById("pulse").addEventListener("click", () => {
         "generations"
     ).innerHTML = `Generation ${generationCounter}`;
 });
+
+document.getElementById("beacon").addEventListener("click", () => {
+    clearInterval(simRunning);
+    document.getElementById("play").disabled = false;
+
+    // Using JSON parse and stringify to dupicate arrays instead of passing pointers arround
+    currentArray = JSON.parse(JSON.stringify(presets.beacon));
+    newArray = JSON.parse(JSON.stringify(presets.beacon));
+    displayGrid();
+
+    generationCounter = 0;
+    document.getElementById(
+        "generations"
+    ).innerHTML = `Generation ${generationCounter}`;
+});
+
+document.getElementById("blinker").addEventListener("click", () => {
+    clearInterval(simRunning);
+    document.getElementById("play").disabled = false;
+
+    // Using JSON parse and stringify to dupicate arrays instead of passing pointers arround
+    currentArray = JSON.parse(JSON.stringify(presets.blinker));
+    newArray = JSON.parse(JSON.stringify(presets.blinker));
+    displayGrid();
+
+    generationCounter = 0;
+    document.getElementById(
+        "generations"
+    ).innerHTML = `Generation ${generationCounter}`;
+});
+
+/******************************
+
+    End of Presets Section
+
+*******************************/
 
 // Set speed between one generation every 1100ms -> every 100ms
 document.getElementById("speed").addEventListener("input", () => {
