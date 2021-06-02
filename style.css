@@ -16,17 +16,6 @@ body {
 }
 
 #actionBar {
-    /*
-    position: fixed;
-    background-color: lightblue;
-    width: 100%;
-    bottom: 0;
-    margin: 0;
-    z-index: 1000;
-    
-    WHY ISNT THIS WORKING ON MOBILE IN FIREFOX DEVTOOL?
-    
-    */
     display: flex;
     flex-direction: column;
     align-items: center;
