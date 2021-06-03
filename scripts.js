@@ -18,23 +18,32 @@ const gridSize = 50; //gridSize hardcoded, allow user to choose size?
 let currentArray = createArr(gridSize); //2d array
 let newArray = createArr(gridSize);
 
-createGrid(gridSize);
-
 let simRunning; // Interval for calling runSim
 let simSpeed = 500; // Default sim speed
 let generationCounter = 0;
 
 let slider = (document.getElementById("speed").value = 500);
 
+createGrid(gridSize);
+createPresetListeners();
+
+/***************************
+
+    Button Event Listeners
+
+****************************/
+
 document.getElementById("nextStep").addEventListener("click", runSim);
 document.getElementById("play").addEventListener("click", () => {
     simRunning = setInterval(runSim, simSpeed);
     document.getElementById("play").disabled = true;
 });
+
 document.getElementById("pause").addEventListener("click", () => {
     clearInterval(simRunning);
     document.getElementById("play").disabled = false;
 });
+
 document.getElementById("clear").addEventListener("click", () => {
     clearInterval(simRunning);
     document.getElementById("play").disabled = false;
@@ -47,11 +56,27 @@ document.getElementById("clear").addEventListener("click", () => {
     ).innerHTML = `Generation ${generationCounter}`;
 });
 
-/***********************
+document.getElementById("presetsButton").addEventListener("click", () => {
+    let dropdown = document.getElementById("dropdown");
+    if (dropdown.classList.contains("hidden")) {
+        dropdown.classList.remove("hidden");
+    } else {
+        dropdown.classList.add("hidden");
+    }
+});
 
-    Presets section
+// Set speed between one generation every 1100ms -> every 100ms
+document.getElementById("speed").addEventListener("input", () => {
+    clearInterval(simRunning);
+    simSpeed = Math.round(1100 - document.getElementById("speed").value);
+    document.getElementById("play").disabled = false;
+});
 
-************************/
+/***************
+
+    Presets
+
+****************/
 
 function presetListener(preset) {
     document.getElementById(preset).addEventListener("click", () => {
@@ -67,6 +92,8 @@ function presetListener(preset) {
         document.getElementById(
             "generations"
         ).innerHTML = `Generation ${generationCounter}`;
+
+        document.getElementById("dropdown").classList.add("hidden");
     });
 }
 
@@ -76,20 +103,11 @@ function createPresetListeners() {
     }
 }
 
-createPresetListeners();
+/*****************
 
-/******************************
+    Presets End
 
-    End of Presets Section
-
-*******************************/
-
-// Set speed between one generation every 1100ms -> every 100ms
-document.getElementById("speed").addEventListener("input", () => {
-    clearInterval(simRunning);
-    simSpeed = Math.round(1100 - document.getElementById("speed").value);
-    document.getElementById("play").disabled = false;
-});
+******************/
 
 function runSim() {
     for (let i = 0; i < currentArray.length; i++) {

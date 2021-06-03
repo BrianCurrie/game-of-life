@@ -72,6 +72,10 @@ body {
     background-color: black;
 }
 
+.hidden {
+    display: none !important;
+}
+
 /******************
 
     Media Queries
