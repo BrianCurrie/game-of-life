@@ -49,54 +49,34 @@ document.getElementById("clear").addEventListener("click", () => {
 
 /***********************
 
-    Presets section [Break these down into functions so we aren't repeating code.]
+    Presets section
 
 ************************/
 
-document.getElementById("spider").addEventListener("click", () => {
-    clearInterval(simRunning);
-    document.getElementById("play").disabled = false;
+function presetListener(preset) {
+    document.getElementById(preset).addEventListener("click", () => {
+        clearInterval(simRunning);
+        document.getElementById("play").disabled = false;
 
-    // Using JSON parse and stringify to dupicate arrays instead of passing pointers arround
-    currentArray = JSON.parse(JSON.stringify(presets.spider));
-    newArray = JSON.parse(JSON.stringify(presets.spider));
-    displayGrid();
+        // Using JSON parse and stringify to dupicate arrays instead of passing pointers arround
+        currentArray = JSON.parse(JSON.stringify(presets[preset]));
+        newArray = JSON.parse(JSON.stringify(presets[preset]));
+        displayGrid();
 
-    generationCounter = 0;
-    document.getElementById(
-        "generations"
-    ).innerHTML = `Generation ${generationCounter}`;
-});
+        generationCounter = 0;
+        document.getElementById(
+            "generations"
+        ).innerHTML = `Generation ${generationCounter}`;
+    });
+}
 
-document.getElementById("beacon").addEventListener("click", () => {
-    clearInterval(simRunning);
-    document.getElementById("play").disabled = false;
+function createPresetListeners() {
+    for (let preset in presets) {
+        presetListener(preset);
+    }
+}
 
-    // Using JSON parse and stringify to dupicate arrays instead of passing pointers arround
-    currentArray = JSON.parse(JSON.stringify(presets.beacon));
-    newArray = JSON.parse(JSON.stringify(presets.beacon));
-    displayGrid();
-
-    generationCounter = 0;
-    document.getElementById(
-        "generations"
-    ).innerHTML = `Generation ${generationCounter}`;
-});
-
-document.getElementById("blinker").addEventListener("click", () => {
-    clearInterval(simRunning);
-    document.getElementById("play").disabled = false;
-
-    // Using JSON parse and stringify to dupicate arrays instead of passing pointers arround
-    currentArray = JSON.parse(JSON.stringify(presets.blinker));
-    newArray = JSON.parse(JSON.stringify(presets.blinker));
-    displayGrid();
-
-    generationCounter = 0;
-    document.getElementById(
-        "generations"
-    ).innerHTML = `Generation ${generationCounter}`;
-});
+createPresetListeners();
 
 /******************************
 

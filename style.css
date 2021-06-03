@@ -10,14 +10,15 @@ body {
 
 #dropdown {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 
 #dropdown .preset {
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
     width: 300px;
 }
 
