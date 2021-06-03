@@ -20,6 +20,12 @@ body {
     align-items: center;
     text-align: center;
     width: 300px;
+    margin: 10px;
+}
+
+#dropdown .preset:hover {
+    background-color: rgba(236, 236, 236, 0.616);
+    cursor: pointer;
 }
 
 #dropdown img {
