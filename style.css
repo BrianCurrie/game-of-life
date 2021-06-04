@@ -8,10 +8,28 @@ body {
     padding: 0;
 }
 
+#mainContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+}
+
+#dropdownContainer {
+    background-color: rgb(236, 236, 236);
+    border: 1px solid rgba(128, 128, 128, 0.5);
+    padding: 10px;
+}
+
 #dropdown {
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
+}
+
+#presetButtonContainer {
+    display: flex;
+    justify-content: flex-end;
 }
 
 #dropdown .preset {
@@ -20,17 +38,19 @@ body {
     align-items: center;
     text-align: center;
     width: 300px;
+    padding: 10px;
     margin: 10px;
 }
 
 #dropdown .preset:hover {
-    background-color: rgba(236, 236, 236, 0.616);
+    background-color: rgba(187, 187, 187, 0.616);
     cursor: pointer;
 }
 
-#dropdown img {
+#dropdown .preset img {
     width: 50%;
     height: auto;
+    margin: 5px;
 }
 
 #dropdown .preset .presetName {
@@ -48,9 +68,9 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 10px;
     padding: 10px;
     border: 1px solid rgba(128, 128, 128, 0.5);
+    background-color: rgb(236, 236, 236);
 }
 
 #actionBarSecondary {
