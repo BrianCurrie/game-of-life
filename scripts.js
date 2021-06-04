@@ -27,6 +27,12 @@ let slider = (document.getElementById("speed").value = 500);
 createGrid(gridSize);
 createPresetListeners();
 
+/* Listener to make sure page is always 100vh on mobile */
+window.addEventListener("resize", () => {
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty("--vh", `${vh}px`);
+});
+
 /***************************
 
     Button Event Listeners

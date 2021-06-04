@@ -12,7 +12,10 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    /* fallback height when custom properties are not supported */
     height: 100vh;
+    /* variable height for correct sizing on mobile */
+    height: calc(var(--vh, 1vh) * 100);
 }
 
 #dropdownContainer {
