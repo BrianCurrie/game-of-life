@@ -1,3 +1,12 @@
+:root {
+    --default-bg-color: #fff;
+    --default-grid-color: rgba(128, 128, 128, 0.13);
+    --default-text-color: #000;
+    --default-accent-color: #ececec;
+    --default-accent-color-alt: #b5b5b5;
+    --default-alive-cell: #000;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -19,8 +28,8 @@ body {
 }
 
 #dropdownContainer {
-    background-color: rgb(236, 236, 236);
-    border: 1px solid rgba(128, 128, 128, 0.5);
+    background-color: var(--default-accent-color);
+    border: 1px solid var(--default-accent-color-alt);
     padding: 10px;
 }
 
@@ -54,7 +63,7 @@ body {
 }
 
 #dropdown .preset:hover {
-    background-color: rgba(187, 187, 187, 0.616);
+    background-color: var(--default-accent-color-alt);
     cursor: pointer;
 }
 
@@ -81,8 +90,8 @@ body {
     flex-direction: column;
     align-items: center;
     padding: 10px;
-    border: 1px solid rgba(128, 128, 128, 0.5);
-    background-color: rgb(236, 236, 236);
+    border: 1px solid var(--default-accent-color-alt);
+    background-color: var(--default-accent-color);
 }
 
 #actionBarSecondary {
@@ -109,17 +118,25 @@ body {
 }
 
 .cell {
-    border: 1px solid rgba(128, 128, 128, 0.13);
+    border: 1px solid var(--default-grid-color);
     width: 15px;
     height: 15px;
 }
 
 .alive {
-    background-color: black;
+    background-color: var(--default-alive-cell);
 }
 
 .hidden {
     display: none !important;
+}
+
+.noSelect {
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
 }
 
 /******************

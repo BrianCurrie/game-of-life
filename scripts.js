@@ -24,6 +24,8 @@ let generationCounter = 0;
 
 let slider = (document.getElementById("speed").value = 500);
 
+let isDrawing = false;
+
 createGrid(gridSize);
 createPresetListeners();
 
@@ -178,14 +180,16 @@ function createArr(size) {
 
 function createGrid(size) {
     const container = document.getElementById("container");
+    let row;
+    let cell;
 
     for (let r = 0; r < size; r++) {
-        let row = document.createElement("div");
+        row = document.createElement("div");
 
         for (let c = 0; c < size; c++) {
-            let cell = document.createElement("div");
+            cell = document.createElement("div");
             cell["location"] = [r, c];
-            row.appendChild(cell).className = "cell";
+            row.appendChild(cell).className = "cell noSelect";
         }
 
         container.appendChild(row).className = "gridRow";
@@ -193,21 +197,42 @@ function createGrid(size) {
 
     const rows = Array.from(document.getElementsByClassName("gridRow"));
 
-    for (let i = 0; i < currentArray.length; i++) {
-        for (let j = 0; j < currentArray[i].length; j++) {
-            rows[i].childNodes[j].addEventListener("click", (e) => {
-                let row = e.target["location"][0];
-                let cell = e.target["location"][1];
-                if (e.target.classList.contains("alive")) {
-                    e.target.classList.remove("alive");
-                    currentArray[row][cell] = 0;
-                } else {
-                    e.target.classList.add("alive");
-                    currentArray[row][cell] = 1;
-                }
-            });
+    container.addEventListener("mousedown", (e) => {
+        isDrawing = true;
+        if (e.target["location"] != undefined) {
+            row = e.target["location"][0];
+            cell = e.target["location"][1];
+            if (e.target.classList.contains("alive")) {
+                e.target.classList.remove("alive");
+                currentArray[row][cell] = 0;
+            } else {
+                e.target.classList.add("alive");
+                currentArray[row][cell] = 1;
+            }
         }
-    }
+    });
+
+    container.addEventListener("mouseup", (e) => {
+        isDrawing = false;
+    });
+
+    container.addEventListener("mouseover", (e) => {
+        let hasPosition = false;
+        if (e.target["location"] != undefined) {
+            row = e.target["location"][0];
+            cell = e.target["location"][1];
+            hasPosition = true;
+        }
+        if (isDrawing && hasPosition) {
+            if (e.target.classList.contains("alive")) {
+                e.target.classList.remove("alive");
+                currentArray[row][cell] = 0;
+            } else {
+                e.target.classList.add("alive");
+                currentArray[row][cell] = 1;
+            }
+        }
+    });
 }
 
 /* adjacentSum takes the sum of any 9 cell group, row+column corresponding to the center of this 3x3 grid  */
