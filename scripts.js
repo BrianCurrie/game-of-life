@@ -195,9 +195,7 @@ function createGrid(size) {
         container.appendChild(row).className = "gridRow";
     }
 
-    const rows = Array.from(document.getElementsByClassName("gridRow"));
-
-    container.addEventListener("mousedown", (e) => {
+    function draw(e) {
         isDrawing = true;
         if (e.target["location"] != undefined) {
             row = e.target["location"][0];
@@ -210,13 +208,13 @@ function createGrid(size) {
                 currentArray[row][cell] = 1;
             }
         }
-    });
+    }
 
-    container.addEventListener("mouseup", (e) => {
+    function drawStop(e) {
         isDrawing = false;
-    });
+    }
 
-    container.addEventListener("mouseover", (e) => {
+    function drawMove(e) {
         let hasPosition = false;
         if (e.target["location"] != undefined) {
             row = e.target["location"][0];
@@ -232,7 +230,11 @@ function createGrid(size) {
                 currentArray[row][cell] = 1;
             }
         }
-    });
+    }
+
+    container.addEventListener("mousedown", draw);
+    container.addEventListener("mouseup", drawStop);
+    container.addEventListener("mouseover", drawMove);
 }
 
 /* adjacentSum takes the sum of any 9 cell group, row+column corresponding to the center of this 3x3 grid  */
