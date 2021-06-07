@@ -61,7 +61,7 @@ document.getElementById("pause").addEventListener("click", () => {
     document.getElementById("play").disabled = false;
 });
 
-document.getElementById("clear").addEventListener("click", () => {
+document.getElementById("reset").addEventListener("click", () => {
     clearInterval(simRunning);
     document.getElementById("play").disabled = false;
     currentArray = createArr(gridSize);
@@ -75,10 +75,13 @@ document.getElementById("clear").addEventListener("click", () => {
 
 document.getElementById("presetsButton").addEventListener("click", () => {
     let dropdown = document.getElementById("dropdown");
+    let title = document.getElementById("presetTitle");
     if (dropdown.classList.contains("hidden")) {
         dropdown.classList.remove("hidden");
+        title.classList.remove("hidden");
     } else {
         dropdown.classList.add("hidden");
+        title.classList.add("hidden");
     }
 });
 
@@ -111,6 +114,7 @@ function presetListener(preset) {
         ).innerHTML = `Generation ${generationCounter}`;
 
         document.getElementById("dropdown").classList.add("hidden");
+        document.getElementById("presetTitle").classList.add("hidden");
     });
 }
 

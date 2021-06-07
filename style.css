@@ -35,6 +35,14 @@ body {
     justify-content: flex-end;
 }
 
+#presetButtonContainer #presetsButton {
+    cursor: pointer;
+}
+
+#presetTitle {
+    text-align: center;
+}
+
 #dropdown .preset {
     display: flex;
     flex-direction: column;
@@ -82,9 +90,17 @@ body {
     align-items: center;
 }
 
+#buttons > button {
+    cursor: pointer;
+}
+
 #speedInput {
     display: flex;
     margin: 0 10px;
+}
+
+#speedInput > input {
+    cursor: pointer;
 }
 
 .gridRow {
