@@ -22,7 +22,7 @@ The Game of Life is played on a grid with each cell being "alive" or "dead".
 A player determins the original state of the grid, after which four rules govern
 the subsequent generations:
 
-1. A dead cell has exactly 3 living neighbors it will come back to life
+1. A dead cell which has exactly 3 living neighbors will come back to life
 
 2. A living cell with exactly 2 or 3 living neighbors will stay alive
 

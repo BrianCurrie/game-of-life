@@ -39,12 +39,17 @@ body {
     flex-wrap: wrap;
 }
 
-#presetButtonContainer {
+#dropdownButtonContainer {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
 }
 
-#presetButtonContainer #presetsButton {
+.justifyFlexEnd {
+    display: flex;
+    justify-content: flex-end !important;
+}
+
+#dropdownButtonContainer #presetsButton {
     cursor: pointer;
 }
 
@@ -75,6 +80,14 @@ body {
 
 #dropdown .preset .presetName {
     font-weight: 600;
+}
+
+.aliveText {
+    color: green;
+}
+
+.deadText {
+    color: red;
 }
 
 #container {

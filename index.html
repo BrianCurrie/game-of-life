@@ -10,7 +10,10 @@
     <body>
         <div id="mainContainer">
             <div id="dropdownContainer">
-                <div id="presetButtonContainer">
+                <div id="dropdownButtonContainer">
+                    <button id="infoButton">
+                        <img src="images/info.png" />
+                    </button>
                     <button id="presetsButton">
                         <img src="images/menu.png" />
                     </button>
@@ -120,6 +123,27 @@
                         </div>
                         <img src="images/spider.png" alt="spider" />
                     </div>
+                </div>
+                <h1 id="intoTitle" class="hidden">Conway's Game of Life</h1>
+                <div id="infoContainer" class="hidden">
+                    <p>
+                        The Game of Life is played on a grid. Each cell on this
+                        grid is either alive or dead. A player determines the
+                        original state of the grid, after which four rules
+                        govern the subsequent generations: <br />1. A
+                        <span class="deadText">dead</span> cell with exactly 3
+                        living neighbors will come back to
+                        <span class="aliveText">life</span><br />2. A
+                        <span class="aliveText">living</span>
+                        cell with exactly 2 or 3 living neighbors will stay
+                        <span class="aliveText">alive</span> <br />3. A
+                        <span class="aliveText">living</span> cell with less
+                        than 2 living neighbors will
+                        <span class="deadText">die</span><br />4. A
+                        <span class="aliveText">living</span> cell with 3 or
+                        more living neighbors will
+                        <span class="deadText">die</span>
+                    </p>
                 </div>
             </div>
             <div id="container" class="noSelect"></div>

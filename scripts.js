@@ -78,12 +78,45 @@ document.getElementById("reset").addEventListener("click", () => {
 document.getElementById("presetsButton").addEventListener("click", () => {
     let dropdown = document.getElementById("dropdown");
     let title = document.getElementById("presetTitle");
+    let presetButtonContainer = document.getElementById(
+        "dropdownButtonContainer"
+    );
+    let infoButton = document.getElementById("infoButton");
+
     if (dropdown.classList.contains("hidden")) {
         dropdown.classList.remove("hidden");
         title.classList.remove("hidden");
+        presetButtonContainer.classList.add("justifyFlexEnd");
     } else {
         dropdown.classList.add("hidden");
         title.classList.add("hidden");
+        presetButtonContainer.classList.remove("justifyFlexEnd");
+    }
+
+    if (infoButton.classList.contains("hidden")) {
+        infoButton.classList.remove("hidden");
+    } else {
+        infoButton.classList.add("hidden");
+    }
+});
+
+document.getElementById("infoButton").addEventListener("click", () => {
+    let info = document.getElementById("infoContainer");
+    let infoTitle = document.getElementById("intoTitle");
+    let presetButton = document.getElementById("presetsButton");
+
+    if (info.classList.contains("hidden")) {
+        info.classList.remove("hidden");
+        infoTitle.classList.remove("hidden");
+    } else {
+        info.classList.add("hidden");
+        infoTitle.classList.add("hidden");
+    }
+
+    if (presetButton.classList.contains("hidden")) {
+        presetButton.classList.remove("hidden");
+    } else {
+        presetButton.classList.add("hidden");
     }
 });
 
@@ -117,6 +150,10 @@ function presetListener(preset) {
 
         document.getElementById("dropdown").classList.add("hidden");
         document.getElementById("presetTitle").classList.add("hidden");
+        document.getElementById("infoButton").classList.remove("hidden");
+        document
+            .getElementById("dropdownButtonContainer")
+            .classList.remove("justifyFlexEnd");
     });
 }
 
