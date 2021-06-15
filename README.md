@@ -6,3 +6,5 @@ The "Game of Life" is a cellular automation created by British Mathematician Joh
 
 Read about the basics of Conway's Game of Life [here](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life).
 Or check out [LifeWiki](https://conwaylife.com/wiki/Main_Page) for more information.
+
+![Game of Life example](https://i.imgur.com/00P8dkp.gif)
